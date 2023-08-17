@@ -6,6 +6,14 @@ app.get('/', (req, res) => {
   res.send('Hello, World!');
 });
 
+app.get('/health', (req, res) => {
+  res.status(200).send('Healthy');
+});
+
+app.get('/ready', (req, res) => {
+  res.status(200).send('Ready');
+});
+
 app.listen(port, () => {
   console.log(`Microservice listening at http://localhost:${port}`);
 });
