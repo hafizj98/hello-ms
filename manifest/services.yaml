@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-ms-service
+  labels:
+    app: hello-ms
+spec:
+  selector:
+    app: hello-ms
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: LoadBalancer
