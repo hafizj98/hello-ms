@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: hello-ms
-        image: hafizjamil/ms:20.5
+        image: hafizjamil/ms:latest
         ports:
         - containerPort: 3000
         livenessProbe:
