@@ -19,6 +19,18 @@ spec:
         image: hafizjamil/ms:latest
         ports:
         - containerPort: 3000
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8081
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8081
+          initialDelaySeconds: 5
+          periodSeconds: 10
         resources:
           limits:
             cpu: "0.5"
