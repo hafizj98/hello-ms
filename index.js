@@ -3,15 +3,15 @@ const app = express();
 const port = 3000;
 
 app.get('/', (req, res) => {
-  res.send('Hello, World!');
+  res.send('Incorrect Response'); // Changed from 'Hello, World!' to 'Incorrect Response'
 });
 
 app.get('/health', (req, res) => {
-  res.status(500).send('Unhealthy'); // Changed status code to 500
+  res.status(200).send('Healthy');
 });
 
 app.get('/ready', (req, res) => {
-  res.status(500).send('Not Ready'); // Changed status code to 500
+  res.status(200).send('Ready');
 });
 
 app.listen(port, () => {
