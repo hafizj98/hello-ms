@@ -7,13 +7,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/health', (req, res) => {
-  res.status(200).sed('Healthy');
+  res.status(500).send('Unhealthy'); // Changed status code to 500
 });
 
 app.get('/ready', (req, res) => {
-  res.status(200).sed('Ready');
+  res.status(500).send('Not Ready'); // Changed status code to 500
 });
 
-app.lsten(port, () => {
+app.listen(port, () => {
   console.log(`Microservice listening at http://localhost:${port}`);
 });
