@@ -8,6 +8,14 @@ pipeline {
             }
         }
 
+        steps {
+            script {
+                def gitUrl = sh(script: 'git config --get remote.origin.url', returnStdout: true).trim()
+                echo "Git remote origin URL: ${gitUrl}"
+            }
+        }
+
+
         stage('Test') {
             steps {
                 sh 'npm install'
