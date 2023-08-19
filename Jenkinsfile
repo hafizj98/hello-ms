@@ -2,6 +2,12 @@ pipeline {
     agent any
 
     stages {
+        stage('Checkout Repository') {
+            steps {
+                checkout scm
+            }
+        }
+
         stage('Test') {
             steps {
                 sh 'npm install'
@@ -32,6 +38,12 @@ pipeline {
                 sh 'git commit -m "Update image tag to latest"'
                 sh 'git push origin master'
             }
+        }
+    }
+
+    post {
+        failure {
+            echo 'Pipeline failed. Please check the logs for more details.'
         }
     }
 }
