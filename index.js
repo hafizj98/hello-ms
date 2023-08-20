@@ -17,3 +17,5 @@ app.get('/ready', (req, res) => {
 app.listen(port, () => {
   console.log(`Microservice listening at http://localhost:${port}`);
 });
+
+module.exports = app;

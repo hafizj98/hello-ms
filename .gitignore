@@ -75,3 +75,7 @@ dist
 *.swo
 *.swn
 *.bak
+
+helm-argocd/
+helm-jenkins/
+terraform/

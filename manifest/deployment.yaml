@@ -41,5 +41,3 @@ spec:
         env:
         - name: NODE_ENV
           value: "production"
-        - name: INCORRECT_ENV_VAR
-          value: "incorrect_value"
