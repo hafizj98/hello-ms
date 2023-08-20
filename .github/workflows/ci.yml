@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: Build and Push Docker Image
 
 on:
   push:
@@ -8,55 +8,29 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: hafizjamil/ms:${{ github.sha }}
 
-    - name: Install dependencies
-      run: npm install
+      - name: Update values.yaml
+        run: |
+          echo "image:" > ./templates/values.yaml
+          echo "  repository: hafizjamil/ms" >> ./templates/values.yaml
+          echo "  tag: ${{ github.sha }}" >> ./templates/values.yaml
 
-    - name: Run tests
-      run: npm test
-
-    - name: Login to Docker Hub
-      uses: docker/login-action@v1
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_PASSWORD }}
-
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
-
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        file: ./Dockerfile
-        push: true
-        tags: |
-          ${{ secrets.DOCKERHUB_USERNAME }}/ms:${{ github.sha }}
-
-    - name: Set Git user
-      run: |
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
-
-
-    - name: Update image tag in deployment.yaml
-      run: |
-        git checkout main
-        sed -i 's|***/ms:.*|***/ms:${{ github.sha }}|g' manifest/deployment.yaml
-        git add manifest/deployment.yaml
-        if git diff-index --quiet HEAD --; then
-          echo "No changes to commit"
-        else
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Commit and push changes
+        run: |
           git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add ./templates/values.yaml
           git commit -m "Update image tag to ${{ github.sha }}"
-          git push https://${{secrets.PAT}}@github.com/hafizj98/hello-ms.git main
-        fi
+          git push origin HEAD:main
