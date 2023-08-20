@@ -52,4 +52,4 @@ jobs:
         sed -i 's|hafizjamil/ms:[^ ]*|hafizjamil/ms:latest|g' manifest/deployment.yaml
         git add manifest/deployment.yaml
         git commit -m "Update image tag to latest"
-        git push https://${{secrets.GITHUB_TOKEN}}@github.com/hafizj98/hello-ms.git main
+        git push https://${{secrets.PAT}}@github.com/hafizj98/hello-ms.git main
