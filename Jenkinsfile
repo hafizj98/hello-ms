@@ -3,6 +3,10 @@ node {
         checkout scm
     }
     
+    stage('Configure Git') {
+        sh 'git config --global --add safe.directory "*"'
+    }
+    
     stage('Build') {
         sh 'echo "Building the project..."'
         // Add your build commands here
