@@ -33,7 +33,9 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    def appImage = docker.build('hafizjamil/ms:latest')
+                    docker.withTool('ms-docker') {
+                        def appImage = docker.build('hafizjamil/ms:latest')
+                    }
                 }
             }
         }
@@ -42,8 +44,10 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                     script {
-                        def appImage = docker.image('hafizjamil/ms:latest')
-                        appImage.push()
+                        docker.withTool('ms-docker') {
+                            def appImage = docker.image('hafizjamil/ms:latest')
+                            appImage.push()
+                        }
                     }
                 }
             }
