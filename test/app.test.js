@@ -6,7 +6,7 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 describe('App', () => {
-    it('should return "Rollback success" on the root path', (done) => {
+    it('should return 200 code on the root path', (done) => {
         chai.request(app)
             .get('/')
             .end((err, res) => {
