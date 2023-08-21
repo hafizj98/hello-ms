@@ -14,8 +14,8 @@ app.get('/ready', (req, res) => {
   res.status(200).send('Ready');
 });
 
-app.listen(port, '0.0.0.0', () => {
-  console.log(`Microservice listening at http://0.0.0.0:${port}`);
+app.listen(port, () => {
+  console.log(`Microservice listening at port ${port}`);
 });
 
 module.exports = app;
