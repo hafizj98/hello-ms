@@ -3,7 +3,7 @@ const app = express();
 const port = 3000;
 
 app.get('/', (req, res) => {
-  res.send('Welcome to Hafiz website.'); // Changed from 'Hello, World!' to 'Incorrect Response'
+  res.send('Welcome to Hafiz shopping website.'); // Changed from 'Hello, World!' to 'Incorrect Response'
 });
 
 app.get('/health', (req, res) => {
