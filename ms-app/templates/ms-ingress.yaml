@@ -9,7 +9,7 @@ spec:
   - host: www.hafiz-tech.com
     http:
       paths:
-      - path: /hello-ms
+      - path: /
         pathType: Prefix
         backend:
           service:
