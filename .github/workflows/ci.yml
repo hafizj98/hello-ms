@@ -29,9 +29,9 @@ jobs:
 
       - name: Update values.yaml
         run: |
-          echo "image:" > ./ms-app/templates/values.yaml
-          echo "  repository: hafizjamil/ms" >> ./ms-app/templates/values.yaml
-          echo "  tag: ${{ github.sha }}" >> ./ms-app/templates/values.yaml
+          echo "image:" > ./ms-app/values.yaml
+          echo "  repository: hafizjamil/ms" >> ./ms-app/values.yaml
+          echo "  tag: ${{ github.sha }}" >> ./ms-app/values.yaml
 
       - name: Commit and push changes
         run: |
