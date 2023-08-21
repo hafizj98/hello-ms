@@ -18,4 +18,9 @@ app.listen(port, () => {
   console.log(`Microservice listening at port ${port}`);
 });
 
+app.get('/hello-ms', (req, res) => {
+  res.send('Hello, MS!');
+});
+
+
 module.exports = app;
