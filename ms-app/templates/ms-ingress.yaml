@@ -2,12 +2,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: hello-ms-ingress
-  namespace: default
+  namespace: hello-ms
   annotations:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - http:
+  - host: localhost
+    http:
       paths:
       - path: /hello-ms
         pathType: Prefix
