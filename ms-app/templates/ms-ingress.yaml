@@ -9,7 +9,7 @@ spec:
   - host: localhost
     http:
       paths:
-      - path: /
+      - path: /hello-ms
         pathType: Prefix
         backend:
           service:
