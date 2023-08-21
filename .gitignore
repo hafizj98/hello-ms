@@ -79,3 +79,4 @@ dist
 helm-argocd/
 helm-jenkins/
 terraform/
+manifest/
