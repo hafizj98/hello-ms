@@ -6,10 +6,10 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - host: localhost
+  - host: hafiz-tech.com
     http:
       paths:
-      - path: /hello-ms
+      - path: /
         pathType: Prefix
         backend:
           service:
