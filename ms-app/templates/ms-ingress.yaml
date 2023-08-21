@@ -6,7 +6,7 @@ metadata:
     kubernetes.io/spec.ingressClassName: nginx
 spec:
   rules:
-  - host: hafiz-tech.com
+  - host: www.hafiz-tech.com
     http:
       paths:
       - path: /hello-ms
