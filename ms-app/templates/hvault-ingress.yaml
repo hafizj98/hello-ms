@@ -11,7 +11,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: vault  # Name of your ArgoCD service
+                name: vault-internal  # Name of your ArgoCD service
                 port:
                   number: 8200  # The port ArgoCD is listening on
 
