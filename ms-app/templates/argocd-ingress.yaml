@@ -5,7 +5,8 @@ metadata:
   namespace: argocd
 spec:
   rules:
-    - http:
+    - host: argocd.hafiz-tech.com
+      http:
         paths:
           - path: /argocd  # Define the desired path
             pathType: Prefix
